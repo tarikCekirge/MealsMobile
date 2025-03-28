@@ -1,16 +1,27 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { Link, Stack } from 'expo-router'
+import Container from '@/components/Container';
+import React from 'react';
+import { View, Text } from 'react-native';
 
-const NotFoundScreen = () => {
-    return (
-        <>
-            <Stack.Screen options={{ title: 'Oops! Not Found' }} />
-            <View className='flex-1'>
-                <Text>Go back to Home screen!</Text>
-            </View>
-        </>
-    )
+interface RouteParams {
+    title: string;
 }
 
-export default NotFoundScreen
+interface NotFoundScreenProps {
+    route: {
+        params: RouteParams;
+    };
+}
+
+const NotFoundScreen = ({ route }: NotFoundScreenProps) => {
+    const { title } = route.params;
+
+    return (
+        <Container>
+            <View className='flex-1 items-center justify-center'>
+                <Text className='text-white text-lg'>{title}</Text>
+            </View>
+        </Container>
+    );
+};
+
+export default NotFoundScreen;

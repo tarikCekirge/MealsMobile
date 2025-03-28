@@ -22,7 +22,6 @@ const CategoriesScreen = ({ navigation }: any) => {
 
     return (
         <Container>
-
             <FlatList data={CATEGORIES} keyExtractor={(item) => item.id} renderItem={renderCategoryItem.bind(this)} numColumns={2} />
         </Container>
     )

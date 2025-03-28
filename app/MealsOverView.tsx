@@ -1,16 +1,10 @@
 import { MEALS } from '@/data/dummy-data';
 import { View, FlatList } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import MealItem from '@/components/MealItem';
 import Container from '@/components/Container';
-
-// Stack parametrelerini tanımla
-type RootStackParamList = {
-    MealsOverView: { categoryId: string };
-
-
-};
+import { RootStackParamList } from './_layout';
 
 type Meal = {
     id: string;
@@ -33,7 +27,6 @@ const MealsOverViewScreen: React.FC<MealsOverViewProps> = ({ route }) => {
         return mealItem.categoryIds.indexOf(catId) >= 0;
     });
 
-
     const renderCategoryItem = ({ item }: { item: Meal }) => {
         return <MealItem itemData={item} />;
     };
@@ -44,9 +37,6 @@ const MealsOverViewScreen: React.FC<MealsOverViewProps> = ({ route }) => {
                 data={displayedMeals}
                 keyExtractor={(item) => item.id}
                 renderItem={renderCategoryItem}
-            // numColumns={2}
-            // columnWrapperClassName='gap-x-4'
-
             />
         </Container>
     );
