@@ -3,6 +3,7 @@ import { View, FlatList } from 'react-native';
 import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import MealItem from '@/components/MealItem';
+import Container from '@/components/Container';
 
 // Stack parametrelerini tanımla
 type RootStackParamList = {
@@ -11,7 +12,7 @@ type RootStackParamList = {
 
 };
 
-export type Meal = {
+type Meal = {
     id: string;
     title: string;
     imageUrl: string;
@@ -38,13 +39,16 @@ const MealsOverViewScreen: React.FC<MealsOverViewProps> = ({ route }) => {
     };
 
     return (
-        <View className="flex-1 p-4">
+        <Container>
             <FlatList
                 data={displayedMeals}
                 keyExtractor={(item) => item.id}
                 renderItem={renderCategoryItem}
+            // numColumns={2}
+            // columnWrapperClassName='gap-x-4'
+
             />
-        </View>
+        </Container>
     );
 };
 

@@ -1,9 +1,8 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, Pressable, Image, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
 
 interface MealItemProps {
     itemData: {
-
         id: string;
         title: string;
         imageUrl: string;
@@ -13,14 +12,37 @@ interface MealItemProps {
         duration: number;
         complexity: string;
         affordability: string;
-
     };
 }
 
 export default function MealItem({ itemData }: MealItemProps) {
+    const [isPressed, setIsPressed] = useState(false);
+
+    const { title, imageUrl, duration, complexity, affordability } = itemData;
+
     return (
-        <View>
-            <Text>{itemData.title}</Text>
+        <View className='mb-6 bg-[#1b2125] rounded-lg overflow-hidden ios:overflow-visible flex-1' style={isPressed ? styles.pressedButton : null}>
+            <Pressable
+                android_ripple={{ color: '#1a1818' }}
+                onPressIn={() => setIsPressed(true)}
+                onPressOut={() => setIsPressed(false)}
+            >
+                <View className='p-4'>
+                    <Image className='w-full h-56 rounded-md' source={{ uri: imageUrl }} />
+                </View>
+                <Text className='font-bold text-center text-lg text-white'>{title}</Text>
+                <View className='flex-row justify-center my-2 items-center gap-2 mb-6'>
+                    <Text className='text-white text-xs'>{duration} min</Text>
+                    <Text className='text-white text-xs'>{complexity.toUpperCase()}</Text>
+                    <Text className='text-white text-xs'>{affordability.toUpperCase()}</Text>
+                </View>
+            </Pressable>
         </View>
-    )
+    );
 }
+
+const styles = StyleSheet.create({
+    pressedButton: {
+        opacity: 0.5,
+    },
+});

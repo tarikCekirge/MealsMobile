@@ -1,11 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Text } from 'react-native'
 import React from 'react'
+import Container from '@/components/Container'
 
 const IndexScreen = () => {
     return (
-        <View className='bg-[#25292e] flex-1'>
+        <Container>
             <Text>index</Text>
-        </View>
+        </Container>
     )
 }
 
