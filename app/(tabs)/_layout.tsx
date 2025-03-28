@@ -1,8 +1,9 @@
 import React from 'react';
 import { Button } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Index from './index';
-import CategoriesScreen from './categories';
+import IndexScreen from './Index';
+import CategoriesScreen from './Categories';
+import MealsOverViewScreen from './MealsOverView';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,13 +18,14 @@ const RootLayout = () => {
         >
             <Stack.Screen
                 name="Home"
-                component={Index}
+                component={IndexScreen}
                 options={{
                     title: 'Home',
                     headerRight: () => (<Button title="asd" onPress={() => { }} />)
                 }}
             />
             <Stack.Screen name="Categories" component={CategoriesScreen} />
+            <Stack.Screen name="MealsOverView" component={MealsOverViewScreen} options={{ title: 'Meals OverView' }} />
         </Stack.Navigator>
     );
 }
