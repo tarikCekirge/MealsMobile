@@ -1,26 +1,44 @@
-import React from "react";
-import { StatusBar } from "react-native";
+import React from 'react';
 import "../global.css";
-import { NavigationContainer, NavigationIndependentTree } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import NotFoundScreen from "./+not-found";
-import RootLayout from "./(tabs)/_layout";
+import { Button, StatusBar } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import IndexScreen from './Index';
+import CategoriesScreen from './Categories';
+import MealsOverViewScreen from './MealsOverView';
 
-const Stack = createNativeStackNavigator();
+type RootStackParamList = {
+  Home: undefined;
+  Categories: undefined;
+  MealsOverView: { categoryId: string };
+};
 
-export default function AppLayout() {
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+const RootLayout = () => {
   return (
     <>
-      <NavigationIndependentTree>
-        <NavigationContainer >
-          <Stack.Navigator initialRouteName="Root">
-            <Stack.Screen name="Root" component={RootLayout} options={{ headerShown: false }} />
-            <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ headerShown: false }} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </NavigationIndependentTree>
+      <Stack.Navigator
+        initialRouteName="Categories"
+        screenOptions={{
+          headerStyle: { backgroundColor: '#25292e' },
+          headerTintColor: '#fafafa'
+        }}
+      >
+        <Stack.Screen
+          name="Home"
+          component={IndexScreen}
+          options={{
+            title: 'Home',
+            headerRight: () => (<Button title="btn" onPress={() => { }} />)
+          }}
+        />
+        <Stack.Screen name="Categories" component={CategoriesScreen} />
+        <Stack.Screen name="MealsOverView" component={MealsOverViewScreen} options={{ title: 'Meals OverView' }} />
+      </Stack.Navigator>
       <StatusBar barStyle="light-content" className="bg-[#25292e]" />
     </>
-
   );
 }
+
+export default RootLayout;

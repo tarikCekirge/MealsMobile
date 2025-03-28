@@ -11,9 +11,11 @@ const CategoriesScreen = ({ navigation }: any) => {
     const renderCategoryItem: ListRenderItem<Category> = (itemData) => {
 
         const pressHandler = () => {
-            navigation.navigate('MealsOverView')
+            navigation.navigate('MealsOverView', {
+                categoryId: itemData.item.id
+            })
         }
-        return <CategoryGridTile title={itemData.item.title} color={itemData.item.color} onPress={pressHandler} />
+        return <CategoryGridTile title={itemData.item.title} color={itemData.item.color} onPress={pressHandler} navigation={navigation} />
     };
 
 

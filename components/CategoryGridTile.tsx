@@ -1,13 +1,16 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 type CategoryGridTileProps = {
     title: string;
     color: string;
     onPress: () => void;
+    navigation: any
+
 };
 
-const CategoryGridTile = ({ title, color, onPress }: CategoryGridTileProps) => {
+const CategoryGridTile = ({ title, color, onPress, navigation }: CategoryGridTileProps) => {
     const [isPressed, setIsPressed] = useState(false);
 
     return (
@@ -22,7 +25,7 @@ const CategoryGridTile = ({ title, color, onPress }: CategoryGridTileProps) => {
                 onPress={onPress}
             >
                 <View className="flex-1 p-4 justify-center items-center rounded-lg" style={{ backgroundColor: color }}>
-                    <Text className="font-bold text-lg">{title}</Text>
+                    <Text className="font-bold text-lg text-center">{title}</Text>
                 </View>
             </Pressable>
         </View>
