@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const index = () => {
+const Index = () => {
     return (
         <View className='bg-[#25292e] flex-1'>
             <Text>index</Text>
@@ -9,4 +9,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Index

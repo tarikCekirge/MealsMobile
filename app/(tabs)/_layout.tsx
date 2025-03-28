@@ -1,39 +1,31 @@
-import React from 'react'
-import { Stack, Tabs } from 'expo-router'
+import React from 'react';
+import { Button } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Index from './index';
+import CategoriesScreen from './categories';
+
+const Stack = createNativeStackNavigator();
 
 const RootLayout = () => {
     return (
-        <Tabs screenOptions={{
-            tabBarActiveTintColor: '#ffd33d',
-            headerTitleAlign: "center",
-            headerStyle: {
-                backgroundColor: '#25292e',
-            },
-            headerShadowVisible: true,
-            headerTintColor: '#fff',
-            tabBarStyle: {
-                backgroundColor: '#25292e',
-                borderColor: '#5e728d'
-
-
-
-            },
-        }}>
-            <Tabs.Screen name="index" options={{
-                title: 'Home'
-            }} />
-            <Tabs.Screen name='categories' options={{
-                title: 'Categories'
-            }} />
-        </Tabs>
-
-        // <>
-        //     <Stack>
-        //         <Stack.Screen name="index" options={{ title: 'Home' }} />
-        //         <Stack.Screen name="categories" options={{ title: 'Categories' }} />
-        //     </Stack>
-        // </>
-    )
+        <Stack.Navigator
+            initialRouteName="Categories"
+            screenOptions={{
+                headerStyle: { backgroundColor: '#25292e' },
+                headerTintColor: '#fafafa'
+            }}
+        >
+            <Stack.Screen
+                name="Home"
+                component={Index}
+                options={{
+                    title: 'Home',
+                    headerRight: () => (<Button title="asd" onPress={() => { }} />)
+                }}
+            />
+            <Stack.Screen name="Categories" component={CategoriesScreen} />
+        </Stack.Navigator>
+    );
 }
 
-export default RootLayout
+export default RootLayout;
