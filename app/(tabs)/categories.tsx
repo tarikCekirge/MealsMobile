@@ -1,4 +1,4 @@
-import { FlatList, ListRenderItem } from 'react-native'
+import { FlatList, ListRenderItem, View } from 'react-native'
 import React from 'react'
 import { CATEGORIES } from '@/data/dummy-data'
 import Category from '@/models/category';
@@ -10,7 +10,10 @@ const renderCategoryItem: ListRenderItem<Category> = (itemData) => {
 
 const CategoriesScreen = () => {
     return (
-        <FlatList data={CATEGORIES} keyExtractor={(item) => item.id} renderItem={renderCategoryItem} />
+        <View className='bg-[#25292e] flex-1'>
+
+            <FlatList data={CATEGORIES} keyExtractor={(item) => item.id} renderItem={renderCategoryItem} numColumns={2} />
+        </View>
     )
 }
 

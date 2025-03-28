@@ -1,10 +1,24 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { Stack, Tabs } from 'expo-router'
 
 const RootLayout = () => {
     return (
-        <Tabs>
+        <Tabs screenOptions={{
+            tabBarActiveTintColor: '#ffd33d',
+            headerTitleAlign: "center",
+            headerStyle: {
+                backgroundColor: '#25292e',
+            },
+            headerShadowVisible: true,
+            headerTintColor: '#fff',
+            tabBarStyle: {
+                backgroundColor: '#25292e',
+                borderColor: '#5e728d'
+
+
+
+            },
+        }}>
             <Tabs.Screen name="index" options={{
                 title: 'Home'
             }} />
