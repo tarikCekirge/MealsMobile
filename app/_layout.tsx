@@ -28,8 +28,7 @@ const RootLayout = () => {
           headerTitleAlign: 'center',
           contentStyle: {
             backgroundColor: '#25292e',
-          },
-          animation: 'fade'
+          }
         }}
       >
         <Stack.Screen
@@ -41,7 +40,16 @@ const RootLayout = () => {
           }}
         />
         <Stack.Screen name="Categories" component={CategoriesScreen} options={{ title: 'All Categories' }} />
-        <Stack.Screen name="MealsOverView" component={MealsOverViewScreen} options={{ title: 'Meals OverView' }} />
+        <Stack.Screen name="MealsOverView" component={MealsOverViewScreen}
+        // options={({ route, navigation }) => {
+        //   const catId = route.params.categoryId;
+        //   return {
+        //     title: catId,
+
+        //   }
+        // }}
+
+        />
         <Stack.Screen name="NotFound" component={NotFoundScreen} />
 
       </Stack.Navigator>
