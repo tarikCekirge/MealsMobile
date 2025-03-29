@@ -1,5 +1,10 @@
 import { View, Text, Pressable, Image, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '@/app/_layout';
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'MealDetailsScreen'>;
 
 interface MealItemProps {
     itemData: {
@@ -16,9 +21,10 @@ interface MealItemProps {
 }
 
 export default function MealItem({ itemData }: MealItemProps) {
+    const navigation = useNavigation<NavigationProp>();
     const [isPressed, setIsPressed] = useState(false);
 
-    const { title, imageUrl, duration, complexity, affordability } = itemData;
+    const { id, title, imageUrl, duration, complexity, affordability } = itemData;
 
     return (
         <View className='mb-6 bg-[#1b2125] rounded-lg overflow-hidden ios:overflow-visible flex-1' style={isPressed ? styles.pressedButton : null}>
@@ -26,6 +32,7 @@ export default function MealItem({ itemData }: MealItemProps) {
                 android_ripple={{ color: '#1a1818' }}
                 onPressIn={() => setIsPressed(true)}
                 onPressOut={() => setIsPressed(false)}
+                onPress={() => navigation.navigate('MealDetailsScreen', { mealId: id })}
             >
                 <View className='p-4'>
                     <Image className='w-full h-56 rounded-md' source={{ uri: imageUrl }} />

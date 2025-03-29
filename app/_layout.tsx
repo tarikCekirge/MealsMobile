@@ -6,12 +6,14 @@ import IndexScreen from './Index';
 import CategoriesScreen from './Categories';
 import MealsOverViewScreen from './MealsOverView';
 import NotFoundScreen from './+not-found';
+import MealDetailsScreen from './MealDetails';
 
 export type RootStackParamList = {
   Home: undefined;
   Categories: undefined;
   MealsOverView: { categoryId: string };
   NotFound: { title: string };
+  MealDetailsScreen: { mealId: string };
 };
 
 
@@ -50,6 +52,7 @@ const RootLayout = () => {
         // }}
 
         />
+        <Stack.Screen name="MealDetailsScreen" component={MealDetailsScreen} />
         <Stack.Screen name="NotFound" component={NotFoundScreen} />
 
       </Stack.Navigator>
