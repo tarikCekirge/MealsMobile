@@ -16,7 +16,7 @@ const MealDetailsScreen = ({ route, navigation }: Props) => {
     const mealId = route.params.mealId;
     const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
-    const { title = "Meal Not Found", imageUrl = "", ingredients = [] } = selectedMeal ?? {};
+    const { title = "Meal Not Found", imageUrl = "" } = selectedMeal ?? {};
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -26,7 +26,7 @@ const MealDetailsScreen = ({ route, navigation }: Props) => {
 
     return (
         <Container>
-            <Image source={{ uri: imageUrl }} style={{ width: '100%', height: 200 }} />
+            <Image className='w-full h-56 rounded-md' source={{ uri: imageUrl }} />
             <View>
                 {selectedMeal && <MealDetails itemData={selectedMeal} />}
             </View>
