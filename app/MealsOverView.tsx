@@ -21,7 +21,7 @@ type Meal = {
 type MealsOverViewProps = NativeStackScreenProps<RootStackParamList, 'MealsOverView'>;
 
 const MealsOverViewScreen: React.FC<MealsOverViewProps> = ({ route, navigation }) => {
-    const catId = route.params.categoryId;
+    const catId = route.params?.categoryId;
 
     const displayedMeals = MEALS.filter((mealItem) => {
         return mealItem.categoryIds.indexOf(catId) >= 0;

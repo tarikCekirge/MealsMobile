@@ -3,12 +3,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { useState } from 'react';
 
 interface IconButtonProps {
-    onPress: () => void;
+    onPress?: () => void;
     icon: keyof typeof Ionicons.glyphMap;
     color?: string;
+    size?: number
 }
 
-const IconButton = ({ onPress, icon, color = 'white' }: IconButtonProps) => {
+const IconButton = ({ onPress, icon, color = 'white', size = 24 }: IconButtonProps) => {
     const [isPressed, setIsPressed] = useState(false);
 
     return (
@@ -18,7 +19,7 @@ const IconButton = ({ onPress, icon, color = 'white' }: IconButtonProps) => {
             onPressOut={() => setIsPressed(false)}
             onPress={onPress}
         >
-            <Ionicons name={icon} size={24} color={isPressed ? 'red' : color} />
+            <Ionicons name={icon} size={size} color={isPressed ? 'red' : color} />
         </Pressable>
     );
 };
