@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Button } from 'react-native';
 import React, { useLayoutEffect } from 'react';
 import { MEALS } from '@/data/dummy-data';
 import { RouteProp } from '@react-navigation/native';
@@ -6,6 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '@/app/_layout';
 import Container from '@/components/Container';
 import MealDetails from '@/components/MealDetails';
+import IconButton from '@/components/IconButton';
 
 type Props = {
     route: RouteProp<RootStackParamList, 'MealDetailsScreen'>;
@@ -18,11 +19,19 @@ const MealDetailsScreen = ({ route, navigation }: Props) => {
 
     const { title = "Meal Not Found", imageUrl = "" } = selectedMeal ?? {};
 
+    const headerButtonPressHandler = () => {
+        console.log('Tapped')
+    }
+
     useLayoutEffect(() => {
         navigation.setOptions({
-            title
+            title,
+            headerRight: () => {
+                return <IconButton icon='star' color='white' onPress={headerButtonPressHandler} />
+            }
         });
-    }, [title, navigation]);
+    }, [title, navigation, headerButtonPressHandler]);
+
 
     return (
         <Container>

@@ -1,6 +1,6 @@
 import React from 'react';
 import "../global.css";
-import { Button, StatusBar } from 'react-native';
+import { Button, StatusBar, Text, View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import IndexScreen from './Index';
 import CategoriesScreen from './Categories';
@@ -57,6 +57,7 @@ const RootLayout = () => {
 
       </Stack.Navigator>
       <StatusBar barStyle="light-content" className="bg-[#25292e]" />
+
     </>
   );
 }
