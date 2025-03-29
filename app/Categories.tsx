@@ -1,4 +1,4 @@
-import { FlatList, ListRenderItem, View } from 'react-native'
+import { FlatList, ListRenderItem, ScrollView, View } from 'react-native'
 import React from 'react'
 import { CATEGORIES } from '@/data/dummy-data'
 import Category from '@/models/category';
